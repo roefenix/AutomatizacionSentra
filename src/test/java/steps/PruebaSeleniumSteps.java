@@ -18,71 +18,85 @@ import org.testng.asserts.SoftAssert;
 
 public class PruebaSeleniumSteps {
     RegistroUsuario RegistroNuevo = new RegistroUsuario();
-    InicioSesion InicioCorrecto = new InicioSesion();
+    InicioSesion LoginNuevo = new InicioSesion();
     InicioSesionError InicioErroneo = new InicioSesionError();
     ModificarUsuario UsuarioModificado = new ModificarUsuario();
     ModificarContrasena ContrasenaModificada = new ModificarContrasena();
     CrearTareas CreaTarea = new CrearTareas();
     EditarTareas EditarTarea = new EditarTareas();
     OrdenarTareas OrdenarTarea = new OrdenarTareas();
-    SoftAssert soft = new SoftAssert();
+    //SoftAssert soft = new SoftAssert();
 
     // =============================== Registro Usuario ===============================
-    @Given("estoy en la pagina de login")
-    public void iEnterToTestPage() {
-        RegistroNuevo.enterToTestPage();
-    }
-    @When("oprimo el botón CREAR NUEVO USUARIO")
-    public void iPressBtnCreateUser(){
-        RegistroNuevo.pressBtnCreateUser();
-    }
-    @Then("introduzco nombre, apellido, email, contraseña, repito contraseña incorrecta")
-    public void iPutIncorrectData(){
-        RegistroNuevo.putInCorrectData();
-    }
-    @Then("oprimo el botón REGISTRAR USUARIO con credenciales incorrectas")
-    public void iPressBtnRegisterUserIncorrectData(){
-        RegistroNuevo.pressBtnRegisterUser();
-    }
-    @Then("observo mensaje de creación no exitoso")
-    public void iValidateErrorCreationMessage(){
-        RegistroNuevo.validateErrorCreationMessage();
-    }
-    @Then("oprimo el botón CANCELAR")
-    public void iPressBtnCancel(){
-        RegistroNuevo.pressBtnCancel();
-    }
-    @Then("oprimo el botón CREAR NUEVO USUARIO nuevamente")
-    public void iPressBtnCreateUserNew(){
-        RegistroNuevo.pressBtnCreateUser();
-    }
-    @Then("introduzco nombre, apellido, email, contraseña, repito contraseña")
-    public void iPutCorrectData(){
-        RegistroNuevo.putCorrectData();
-    }
-    @Then("oprimo el botón REGISTRAR USUARIO")
-    public void iPressBtnRegisterUser(){
-        RegistroNuevo.pressBtnRegisterUser();
-    }
-    @And("observo mensaje de creación exitoso")
-    public void iValidateCreationMessage(){
-        RegistroNuevo.validateCreationMessage();
-    }
-    // =============================== Validar Registro Usuario ===============================
-
-    // // =============================== Inicio Sesion ===============================
     // @Given("estoy en la pagina de login")
     // public void iEnterToTestPage() {
-    //     InicioCorrecto.enterToTaskSentraPage();
+    //     RegistroNuevo.enterToTestPage();
     // }
-    // @When("introduzco el email y la contraseña")
-    // public void iWriteCredentials(){
-    //     InicioCorrecto.writeCredentials();
+    // @When("oprimo el botón CREAR NUEVO USUARIO")
+    // public void iPressBtnCreateUser(){
+    //     RegistroNuevo.pressBtnCreateUser();
     // }
-    // @Then("oprimo el botón INGRESAR")
-    // public void iPressBtnSumbit(){
-    //     InicioCorrecto.pressBtnSumbit();
+    // @Then("introduzco nombre, apellido, email, contraseña, repito contraseña incorrecta")
+    // public void iPutIncorrectData(){
+    //     RegistroNuevo.putInCorrectData();
     // }
+    // @Then("oprimo el botón REGISTRAR USUARIO con credenciales incorrectas")
+    // public void iPressBtnRegisterUserIncorrectData(){
+    //     RegistroNuevo.pressBtnRegisterUser();
+    // }
+    // @Then("observo mensaje de creación no exitoso")
+    // public void iValidateErrorCreationMessage(){
+    //     RegistroNuevo.validateErrorCreationMessage();
+    // }
+    // @Then("oprimo el botón CANCELAR")
+    // public void iPressBtnCancel(){
+    //     RegistroNuevo.pressBtnCancel();
+    // }
+    // @Then("oprimo el botón CREAR NUEVO USUARIO nuevamente")
+    // public void iPressBtnCreateUserNew(){
+    //     RegistroNuevo.pressBtnCreateUser();
+    // }
+    // @Then("introduzco nombre, apellido, email, contraseña, repito contraseña")
+    // public void iPutCorrectData(){
+    //     RegistroNuevo.putCorrectData();
+    // }
+    // @Then("oprimo el botón REGISTRAR USUARIO")
+    // public void iPressBtnRegisterUser(){
+    //     RegistroNuevo.pressBtnRegisterUser();
+    // }
+    // @And("observo mensaje de creación exitoso")
+    // public void iValidateCreationMessage(){
+    //     RegistroNuevo.validateCreationMessage();
+    // }
+    // =============================== Inicio Sesion ===============================
+    @Given("estoy en la pagina de login")
+    public void iEnterToTestPage() {
+        LoginNuevo.enterToTestPage();
+    }
+    @When("introduzco el email y la contraseña incorrecta")
+    public void iWriteCredentials(){
+        LoginNuevo.writeIncorrectCredentials();
+    }
+    @Then("oprimo el botón INGRESAR")
+    public void iPressBtnSumbit(){
+        LoginNuevo.pressBtnSumbit();
+    }
+    @Then("observo mensaje de ingreso no exitoso")
+    public void iValidateErrorLoginMessage(){
+        LoginNuevo.validateErrorLoginMessage();
+    }
+    @Then("introduzco el email y la contraseña correcta")
+    public void iWriteCorrectCredentials(){
+        LoginNuevo.writeCorrectCredentials();
+    }
+    @Then("oprimo nuevamente el botón INGRESAR")
+    public void iPressBtnSumbitNew(){
+        LoginNuevo.pressBtnSumbit();
+    }
+    @And("observo ingreso correcto")
+    public void iValidateEntryLogin(){
+        LoginNuevo.validateEntryLogin();
+    }
     // =============================== Inicio Sesion Error ===============================
     // @Given("estoy en la pagina de login")
     // public void iEnterToTaskSentraPageError() {

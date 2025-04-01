@@ -112,7 +112,7 @@ public class BasePage {
         return values;
  
     } */
-    //del diego xd
+    //
     public void waitElementToBeClickable (String locator){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
     }
@@ -130,6 +130,9 @@ public class BasePage {
         return div.getText();  // Devuelve el texto del div
     }
     
+    public String obtenerUrlActual() {
+        return driver.getCurrentUrl();  // Devuelve la URL actual del navegador
+    }
 
     public boolean isTablePresent(String locator) {
         try {

@@ -67,7 +67,7 @@ public class OrdenarTareas extends BasePage{
 
     //Se oprime boton Salir
     public void pressBtnSalir() {
-        clickElement(btnHome);
+        clickElement(btnSalir);
     }
 
 

@@ -112,9 +112,9 @@ public class ModificarUsuario extends BasePage{
             Thread.currentThread().interrupt(); // Restablece el estado de interrupción
             e.printStackTrace();
         }
-        soft.assertEquals(correctNameModificado,obtenerTextoDeDiv(firstNameInfo));
-        soft.assertEquals(correctLastNameModificado,obtenerTextoDeDiv(lastNameInfo));
-        soft.assertEquals(correctEmailMoficado,obtenerTextoDeDiv(emailInfo));
+        soft.assertEquals(": "+correctNameModificado,obtenerTextoDeDiv(firstNameInfo));
+        soft.assertEquals(": "+correctLastNameModificado,obtenerTextoDeDiv(lastNameInfo));
+        soft.assertEquals(": "+correctEmailMoficado,obtenerTextoDeDiv(emailInfo));
         soft.assertAll();
     }
 }

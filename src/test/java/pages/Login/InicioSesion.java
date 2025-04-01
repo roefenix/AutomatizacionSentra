@@ -73,10 +73,3 @@ public class InicioSesion extends BasePage{
         soft.assertAll();
     }
 }
-// //XPATH
-// public String email = "//input[@id='email']";
-// public String password = "//input[@id='password']";
-// public String btnSubmit = "//button[@type='submit']";
-// public String btnHome = "//span[contains(.,'Home')]";
-// public String btnProfile = "//span[contains(.,'Perfil')]";
-// public String btnQuit = "//span[contains(.,'Salir')]";

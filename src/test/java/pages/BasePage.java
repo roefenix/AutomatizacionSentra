@@ -75,12 +75,6 @@ public class BasePage {
         System.out.println("Haciendo click en " + locator);
     }
 
-    // public void write(String locator, String keysToSend){   ... porque esta en "//?"
-    //     Find(locator).clear();
-    //     Find(locator).sendKeys(keysToSend);
-    //     System.out.println("Escribiendo en " + locator);
-    // }
-
     public void selectFromDropdownByValue(String locator, String value){
         Select dropdown = new Select(Find(locator));
  
@@ -100,19 +94,7 @@ public class BasePage {
 
         return dropdownOptions.size();
     }
-    /*    public List<String> getDropdownValues(String locator) { --yo :3 para las listas xd (40)
-        Select dropdown = new Select(Find(locator));
- 
-        List<WebElement> dropdownOptions = dropdown.getOptions();
-        List<String> values = new ArrayList<>();
-        for (WebElement option : dropdownOptions) {
-            values.add(option.getText());
-        }
- 
-        return values;
- 
-    } */
-    //
+
     public void waitElementToBeClickable (String locator){
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
     }
@@ -134,12 +116,4 @@ public class BasePage {
         return driver.getCurrentUrl();  // Devuelve la URL actual del navegador
     }
 
-    public boolean isTablePresent(String locator) {
-        try {
-            WebElement table = driver.findElement(By.xpath(locator));
-            return table.isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
 }

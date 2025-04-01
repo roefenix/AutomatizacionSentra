@@ -98,7 +98,7 @@ public class EditarTareas extends BasePage{
     }
 
     //Se oprime boton CANCELAR
-    public void pressBtnCancelTask() {
+    public void pressBtnCancelEditTask() {
         clickElement(btnCancelTask);
     }
 

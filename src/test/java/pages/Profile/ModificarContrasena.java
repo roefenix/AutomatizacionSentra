@@ -14,6 +14,10 @@ public class ModificarContrasena extends BasePage{
     public String correctPasswordModificado = "123";
     public String correctPasswordModificado2 = "123";
 
+    //Credenciales incorrectas
+    public String incorrectPasswordModificado = "";
+    public String incorrectPasswordModificado2 = "";
+
     //XPATH
     public String email = "//input[@id='email']";
     public String password = "//input[@id='password']";
@@ -68,6 +72,12 @@ public class ModificarContrasena extends BasePage{
     public void putCorrectDataModPass(){
         write(txtPassword, correctPasswordModificado);
         write(txtRepeatPassword, correctPasswordModificado2);
+    }
+
+    //Ingreso incorrecto de los campos Contraseña, Repetir Contraseña
+    public void putIncorrectDataModPass(){
+        write(txtPassword, incorrectPasswordModificado);
+        write(txtRepeatPassword, incorrectPasswordModificado2);
     }
 
     //Se oprime boton CAMBIAR CONTRASEÑA del formulario

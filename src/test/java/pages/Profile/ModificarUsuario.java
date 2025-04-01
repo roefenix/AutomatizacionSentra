@@ -15,6 +15,11 @@ public class ModificarUsuario extends BasePage{
     public String correctLastNameModificado = "Apellido1Mod";
     public String correctEmailMoficado = "email1@gmailMod.com";
 
+    //Credenciales incorrectas
+    public String incorrectNameModificado = "";
+    public String incorrectLastNameModificado = "";
+    public String incorrectEmailMoficado = "";
+
     //XPATH
     public String email = "//input[@id='email']";
     public String password = "//input[@id='password']";
@@ -74,6 +79,13 @@ public class ModificarUsuario extends BasePage{
         write(txtFirstName, correctNameModificado);
         write(txtLastName, correctLastNameModificado);
         write(txtEmail, correctEmailMoficado);
+    }
+
+    //Ingreso incorrecto de los campos Nombre, Apellido Email
+    public void putIncorrectDataMod(){
+        write(txtFirstName, incorrectNameModificado);
+        write(txtLastName, incorrectLastNameModificado);
+        write(txtEmail, incorrectEmailMoficado);
     }
 
     //Se oprime boton Modificar

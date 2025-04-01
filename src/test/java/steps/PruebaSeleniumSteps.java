@@ -9,7 +9,6 @@ import org.testng.asserts.SoftAssert;
     import io.cucumber.java.en.When;
     import pages.Login.RegistroUsuario;
     import pages.Login.InicioSesion;
-    import pages.Login.InicioSesionError;
     import pages.Profile.ModificarUsuario;
     import pages.Profile.ModificarContrasena;
     import pages.Home.CrearTareas;
@@ -19,60 +18,58 @@ import org.testng.asserts.SoftAssert;
 public class PruebaSeleniumSteps {
     RegistroUsuario RegistroNuevo = new RegistroUsuario();
     InicioSesion LoginNuevo = new InicioSesion();
-    InicioSesionError InicioErroneo = new InicioSesionError();
     ModificarUsuario UsuarioModificado = new ModificarUsuario();
     ModificarContrasena ContrasenaModificada = new ModificarContrasena();
     CrearTareas CreaTarea = new CrearTareas();
     EditarTareas EditarTarea = new EditarTareas();
     OrdenarTareas OrdenarTarea = new OrdenarTareas();
-    //SoftAssert soft = new SoftAssert();
 
     // =============================== Registro Usuario ===============================
-    // @Given("estoy en la pagina de login")
-    // public void iEnterToTestPage() {
-    //     RegistroNuevo.enterToTestPage();
-    // }
-    // @When("oprimo el botón CREAR NUEVO USUARIO")
-    // public void iPressBtnCreateUser(){
-    //     RegistroNuevo.pressBtnCreateUser();
-    // }
-    // @Then("introduzco nombre, apellido, email, contraseña, repito contraseña incorrecta")
-    // public void iPutIncorrectData(){
-    //     RegistroNuevo.putInCorrectData();
-    // }
-    // @Then("oprimo el botón REGISTRAR USUARIO con credenciales incorrectas")
-    // public void iPressBtnRegisterUserIncorrectData(){
-    //     RegistroNuevo.pressBtnRegisterUser();
-    // }
-    // @Then("observo mensaje de creación no exitoso")
-    // public void iValidateErrorCreationMessage(){
-    //     RegistroNuevo.validateErrorCreationMessage();
-    // }
-    // @Then("oprimo el botón CANCELAR")
-    // public void iPressBtnCancel(){
-    //     RegistroNuevo.pressBtnCancel();
-    // }
-    // @Then("oprimo el botón CREAR NUEVO USUARIO nuevamente")
-    // public void iPressBtnCreateUserNew(){
-    //     RegistroNuevo.pressBtnCreateUser();
-    // }
-    // @Then("introduzco nombre, apellido, email, contraseña, repito contraseña")
-    // public void iPutCorrectData(){
-    //     RegistroNuevo.putCorrectData();
-    // }
-    // @Then("oprimo el botón REGISTRAR USUARIO")
-    // public void iPressBtnRegisterUser(){
-    //     RegistroNuevo.pressBtnRegisterUser();
-    // }
-    // @And("observo mensaje de creación exitoso")
-    // public void iValidateCreationMessage(){
-    //     RegistroNuevo.validateCreationMessage();
-    // }
-    // =============================== Inicio Sesion ===============================
     @Given("estoy en la pagina de login")
     public void iEnterToTestPage() {
-        LoginNuevo.enterToTestPage();
+        RegistroNuevo.enterToTestPage();
     }
+    @When("oprimo el botón CREAR NUEVO USUARIO")
+    public void iPressBtnCreateUser(){
+        RegistroNuevo.pressBtnCreateUser();
+    }
+    @Then("introduzco nombre, apellido, email, contraseña, repito contraseña incorrecta")
+    public void iPutIncorrectData(){
+        RegistroNuevo.putInCorrectData();
+    }
+    @Then("oprimo el botón REGISTRAR USUARIO con credenciales incorrectas")
+    public void iPressBtnRegisterUserIncorrectData(){
+        RegistroNuevo.pressBtnRegisterUser();
+    }
+    @Then("observo mensaje de creación no exitoso")
+    public void iValidateErrorCreationMessage(){
+        RegistroNuevo.validateErrorCreationMessage();
+    }
+    @Then("oprimo el botón CANCELAR")
+    public void iPressBtnCancel(){
+        RegistroNuevo.pressBtnCancel();
+    }
+    @Then("oprimo el botón CREAR NUEVO USUARIO nuevamente")
+    public void iPressBtnCreateUserNew(){
+        RegistroNuevo.pressBtnCreateUser();
+    }
+    @Then("introduzco nombre, apellido, email, contraseña, repito contraseña")
+    public void iPutCorrectData(){
+        RegistroNuevo.putCorrectData();
+    }
+    @Then("oprimo el botón REGISTRAR USUARIO")
+    public void iPressBtnRegisterUser(){
+        RegistroNuevo.pressBtnRegisterUser();
+    }
+    @And("observo mensaje de creación exitoso")
+    public void iValidateCreationMessage(){
+        RegistroNuevo.validateCreationMessage();
+    }
+    // =============================== Inicio Sesion ===============================
+    // @Given("estoy en la pagina de login")
+    // public void iEnterToTestPage() {
+    //     LoginNuevo.enterToTestPage();
+    // }
     @When("introduzco el email y la contraseña incorrecta")
     public void iWriteCredentials(){
         LoginNuevo.writeIncorrectCredentials();
@@ -97,39 +94,6 @@ public class PruebaSeleniumSteps {
     public void iValidateEntryLogin(){
         LoginNuevo.validateEntryLogin();
     }
-    // =============================== Inicio Sesion Error ===============================
-    // @Given("estoy en la pagina de login")
-    // public void iEnterToTaskSentraPageError() {
-    //     InicioErroneo.enterToTaskSentraPage();
-    // }
-    // @When("introduzco el email y la contraseña erroneos")
-    // public void iWriteCredentialsError(){
-    //     InicioErroneo.writeCredentials();
-    // }
-    // @Then("oprimo el botón INGRESAR para que salga error")
-    // public void iPressBtnSumbitError(){
-    //     InicioErroneo.pressBtnSumbit();
-    // }
-    // // @And("vizualizo mensaje de error")
-    // // public void ObtenerTextoErroneo(String mensajeEsperado){
-    // //     String mensajeObtenido = InicioErroneo.getAlertMessage();
-    // //     assertEquals(mensajeEsperado,mensajeObtenido);
-    // // }
-    // // @And("vizualizo mensaje de error")
-    // // public void testIncorrectLoginMessage() {
-    // //     // Obtener el mensaje de alerta
-    // //     String actualMessage = InicioSesionError.getAlertMessage();
-
-    // //     // Mensaje esperado
-    // //     String expectedMessage = "Usuario o password incorrecto";
-
-    // //     // Comparación con AssertJ
-    // //     assertEquals(actualMessage,expectedMessage);
-    // // }
-    // // @And("vizualizo mensaje de error")
-    // // public void testIncorrectLoginMessage(){
-    // //     String actualMessage =InicioSesionError.getAlertMessage();
-    // // }
     // =============================== Modificar información de usuario ===============================
     // @Given("estoy en la pagina de login")
     // public void iEnterToTestPage() {
@@ -143,30 +107,38 @@ public class PruebaSeleniumSteps {
     // public void iPressBtnSumbit(){
     //     UsuarioModificado.pressBtnSumbit();
     // }
-    // @And("oprimo el botón Perfil")
-    // public void iPressBtnProfile(){
-    //     UsuarioModificado.pressBtnProfile();
-    // }
-    // @When("oprimo el botón EDITAR DATOS USUARIO")
-    // public void iPressBtnEditUser(){
-    //     UsuarioModificado.pressBtnEditUser();
-    // }
-    // @Then("oprimo el botón CANCELAR")
-    // public void iPressBtnCancel(){
-    //     UsuarioModificado.pressBtnCancel();
-    // }
-    // @Then("oprimo el botón EDITAR DATOS USUARIO nuevamente")
-    // public void iPressBtnEditUserNuevo(){
-    //     UsuarioModificado.pressBtnEditUser();
-    // }
-    // @Then("introduzco nombre, apellido, email")
-    // public void iPutCorrectData(){
-    //     UsuarioModificado.putCorrectData();
-    // }
-    // @And("oprimo el botón MODIFICAR USUARIO")
-    // public void iPressBtnModifyUser(){
-    //     UsuarioModificado.pressBtnModifyUser();
-    // }
+    @And("oprimo el botón Perfil")
+    public void iPressBtnProfile(){
+        UsuarioModificado.pressBtnProfile();
+    }
+    @When("oprimo el botón EDITAR DATOS USUARIO")
+    public void iPressBtnEditUser(){
+        UsuarioModificado.pressBtnEditUser();
+    }
+    @Then("oprimo el botón CANCELAR del formulario de modificación")
+    public void iPressBtnCancelMod(){
+        UsuarioModificado.pressBtnCancelMod();
+    }
+    @Then("oprimo el botón EDITAR DATOS USUARIO nuevamente")
+    public void iPressBtnEditUserNuevo(){
+        UsuarioModificado.pressBtnEditUser();
+    }
+    @Then("introduzco nombre, apellido, email")
+    public void iPutCorrectDataMod(){
+        UsuarioModificado.putCorrectDataMod();
+    }
+    @Then("oprimo el botón MODIFICAR USUARIO")
+    public void iPressBtnModifyUser(){
+        UsuarioModificado.pressBtnModifyUser();
+    }
+    @Then("observo mensaje de modificación exitoso")
+    public void iValidateModificationMessage(){
+        UsuarioModificado.validateModificationMessage();
+    }
+    @And("observo nombre, apellido y mail cambiados")
+    public void iValidateModificationInfo(){
+        UsuarioModificado.validateModificationInfo();
+    }
     // =============================== Modificar contraseña del usuario ===============================
     // @Given("estoy en la pagina de login")
     // public void iEnterToTestPage() {
@@ -184,26 +156,30 @@ public class PruebaSeleniumSteps {
     // public void iPressBtnProfile(){
     //     ContrasenaModificada.pressBtnProfile();
     // }
-    // @When("oprimo el botón CAMBIAR CONTRASEÑA")
-    // public void iPressBtnEditPassword(){
-    //     ContrasenaModificada.pressBtnEditPassword();
-    // }
-    // @Then("oprimo el botón CANCELAR")
-    // public void iPressBtnCancel(){
-    //     ContrasenaModificada.pressBtnCancel();
-    // }
-    // @Then("oprimo nuevamente el botón CAMBIAR CONTRASEÑA")
-    // public void iPressBtnEditPasswordNew(){
-    //     ContrasenaModificada.pressBtnEditPassword();
-    // }
-    // @Then("introduzco contraseña y la repetición de la contraseña")
-    // public void iPutCorrectData(){
-    //     ContrasenaModificada.putCorrectData();
-    // }
-    // @Then("oprimo el botón CAMBIAR CONTRASEÑA del formulario")
-    // public void iPressBtnEditPasswordForm(){
-    //     ContrasenaModificada.pressBtnEditPasswordForm();
-    // }
+    @When("oprimo el botón CAMBIAR CONTRASEÑA")
+    public void iPressBtnEditPassword(){
+        ContrasenaModificada.pressBtnEditPassword();
+    }
+    @Then("oprimo el botón CANCELAR del formulario de modificación de contraseña")
+    public void iPressBtnCancelModPass(){
+        ContrasenaModificada.pressBtnCancelModPass();
+    }
+    @Then("oprimo nuevamente el botón CAMBIAR CONTRASEÑA")
+    public void iPressBtnEditPasswordNew(){
+        ContrasenaModificada.pressBtnEditPassword();
+    }
+    @Then("introduzco contraseña y la repetición de la contraseña")
+    public void iPutCorrectDataModPass(){
+        ContrasenaModificada.putCorrectDataModPass();
+    }
+    @Then("oprimo el botón CAMBIAR CONTRASEÑA del formulario")
+    public void iPressBtnEditPasswordForm(){
+        ContrasenaModificada.pressBtnEditPasswordForm();
+    }
+    @And("observo mensaje de modificación de contraseña exitoso")
+    public void iValidateModificationPasswordMessage(){
+        ContrasenaModificada.validateModificationPasswordMessage();
+    }
     // =============================== Crear nueva tarea ===============================
     // @Given("estoy en la pagina de login")
     // public void iEnterToTestPage() {

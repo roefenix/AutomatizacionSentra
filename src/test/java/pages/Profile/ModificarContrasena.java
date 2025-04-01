@@ -1,5 +1,7 @@
 package pages.Profile;
 
+import org.testng.asserts.SoftAssert;
+
 import pages.BasePage;
 
 public class ModificarContrasena extends BasePage{
@@ -7,7 +9,7 @@ public class ModificarContrasena extends BasePage{
     private String Conexion = "http://192.168.80.43:10600/";
 
     //Credenciales correctas
-    public String correctEmail = "email1@gmailMod.com";
+    public String correctEmail = "email1@gmail.com";
     public String correctPassword = "Password1";
     public String correctPasswordModificado = "123";
     public String correctPasswordModificado2 = "123";
@@ -22,7 +24,10 @@ public class ModificarContrasena extends BasePage{
     public String btnEditPasswordForm = "//body/div[2]/div[3]/div/div[2]/button[2]";
     public String txtPassword = "//input[@id='password']";
     public String txtRepeatPassword = "//input[@id='repeat_password']";
+    public String modificationPasswordMessageOK = "//div[@class='MuiAlert-message css-1xsto0d' and text()='Contraseña cambiada correctamente']";
     
+    SoftAssert soft = new SoftAssert();
+
     public ModificarContrasena(){
         super(driver);
     }
@@ -50,7 +55,7 @@ public class ModificarContrasena extends BasePage{
     }
 
     //Se oprime boton CANCELAR
-    public void pressBtnCancel(){
+    public void pressBtnCancelModPass(){
         clickElement(btnCancel);
     }
 
@@ -60,7 +65,7 @@ public class ModificarContrasena extends BasePage{
     }
     
     //Ingreso de los campos Contraseña, Repetir Contraseña
-    public void putCorrectData(){
+    public void putCorrectDataModPass(){
         write(txtPassword, correctPasswordModificado);
         write(txtRepeatPassword, correctPasswordModificado2);
     }
@@ -68,5 +73,16 @@ public class ModificarContrasena extends BasePage{
     //Se oprime boton CAMBIAR CONTRASEÑA del formulario
     public void pressBtnEditPasswordForm(){
         clickElement(btnEditPasswordForm);
+    }
+
+    //Se valida mensaje de modificación de contraseña
+    public void validateModificationPasswordMessage(){
+        try { 
+            Thread.sleep(2000);
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); // Restablece el estado de interrupción
+            e.printStackTrace();
+        }
+        soft.assertEquals("Contraseña cambiada correctamente",obtenerTextoDeDiv(modificationPasswordMessageOK));
     }
 }

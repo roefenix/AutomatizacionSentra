@@ -1,5 +1,7 @@
 package pages.Profile;
 
+import org.testng.asserts.SoftAssert;
+
 import pages.BasePage;
 
 public class ModificarUsuario extends BasePage{
@@ -24,7 +26,13 @@ public class ModificarUsuario extends BasePage{
     public String txtEmail = "//input[@id='email']";
     public String txtFirstName = "//input[@id='firstname']";
     public String txtLastName = "//input[@id='lastname']";
-    
+    public String modificationMessageOK = "//div[@class='MuiAlert-message css-1xsto0d' and text()='Datos de usuario modificados correctamente']";
+    public String firstNameInfo= "/html/body/div[1]/div/main/div[2]/table/tbody/tr[1]/td[2]";
+    public String lastNameInfo= "/html/body/div[1]/div/main/div[2]/table/tbody/tr[2]/td[2]";
+    public String emailInfo= "/html/body/div[1]/div/main/div[2]/table/tbody/tr[3]/td[2]";
+
+    SoftAssert soft = new SoftAssert();
+
     public ModificarUsuario(){
         super(driver);
     }
@@ -52,7 +60,7 @@ public class ModificarUsuario extends BasePage{
     }
 
     //Se oprime boton CANCELAR
-    public void pressBtnCancel(){
+    public void pressBtnCancelMod(){
         clickElement(btnCancel);
     }
 
@@ -62,14 +70,38 @@ public class ModificarUsuario extends BasePage{
     }
     
     //Ingreso de los campos Nombre, Apellido Email
-    public void putCorrectData(){
-        write(txtEmail, correctEmailMoficado);
+    public void putCorrectDataMod(){
         write(txtFirstName, correctNameModificado);
         write(txtLastName, correctLastNameModificado);
+        write(txtEmail, correctEmailMoficado);
     }
 
     //Se oprime boton Modificar
     public void pressBtnModifyUser(){
         clickElement(btnModifyUser);
+    }
+
+    //Se valida mensaje de modificación
+    public void validateModificationMessage(){
+        try { 
+            Thread.sleep(2000);
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); // Restablece el estado de interrupción
+            e.printStackTrace();
+        }
+        soft.assertEquals("Datos de usuario modificados correctamente",obtenerTextoDeDiv(modificationMessageOK));
+    }
+
+    //Se valida cambio de nombre, apellido y mail
+    public void validateModificationInfo(){
+        try { 
+            Thread.sleep(2000);
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); // Restablece el estado de interrupción
+            e.printStackTrace();
+        }
+        soft.assertEquals(correctNameModificado,obtenerTextoDeDiv(firstNameInfo));
+        soft.assertEquals(correctLastNameModificado,obtenerTextoDeDiv(lastNameInfo));
+        soft.assertEquals(correctEmailMoficado,obtenerTextoDeDiv(emailInfo));
     }
 }

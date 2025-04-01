@@ -36,6 +36,18 @@ public class PruebaSeleniumSteps {
     public void iPressBtnCreateUser(){
         RegistroNuevo.pressBtnCreateUser();
     }
+    @Then("introduzco nombre, apellido, email, contraseña, repito contraseña incorrecta")
+    public void iPutIncorrectData(){
+        RegistroNuevo.putInCorrectData();
+    }
+    @Then("oprimo el botón REGISTRAR USUARIO con credenciales incorrectas")
+    public void iPressBtnRegisterUserIncorrectData(){
+        RegistroNuevo.pressBtnRegisterUser();
+    }
+    @Then("observo mensaje de creación no exitoso")
+    public void iValidateErrorCreationMessage(){
+        RegistroNuevo.validateErrorCreationMessage();
+    }
     @Then("oprimo el botón CANCELAR")
     public void iPressBtnCancel(){
         RegistroNuevo.pressBtnCancel();
@@ -48,23 +60,29 @@ public class PruebaSeleniumSteps {
     public void iPutCorrectData(){
         RegistroNuevo.putCorrectData();
     }
-    @And("oprimo el botón REGISTRAR USUARIO")
+    @Then("oprimo el botón REGISTRAR USUARIO")
     public void iPressBtnRegisterUser(){
         RegistroNuevo.pressBtnRegisterUser();
     }
+    @And("observo mensaje de creación exitoso")
+    public void iValidateCreationMessage(){
+        RegistroNuevo.validateCreationMessage();
+    }
+    // =============================== Validar Registro Usuario ===============================
+
     // // =============================== Inicio Sesion ===============================
     // @Given("estoy en la pagina de login")
     // public void iEnterToTestPage() {
     //     InicioCorrecto.enterToTaskSentraPage();
     // }
-    @When("introduzco el email y la contraseña")
-    public void iWriteCredentials(){
-        InicioCorrecto.writeCredentials();
-    }
-    @Then("oprimo el botón INGRESAR")
-    public void iPressBtnSumbit(){
-        InicioCorrecto.pressBtnSumbit();
-    }
+    // @When("introduzco el email y la contraseña")
+    // public void iWriteCredentials(){
+    //     InicioCorrecto.writeCredentials();
+    // }
+    // @Then("oprimo el botón INGRESAR")
+    // public void iPressBtnSumbit(){
+    //     InicioCorrecto.pressBtnSumbit();
+    // }
     // =============================== Inicio Sesion Error ===============================
     // @Given("estoy en la pagina de login")
     // public void iEnterToTaskSentraPageError() {

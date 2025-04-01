@@ -1,5 +1,7 @@
 package pages.Login;
 
+import org.testng.asserts.SoftAssert;
+
 import pages.BasePage;
 
 public class RegistroUsuario extends BasePage {
@@ -13,6 +15,9 @@ public class RegistroUsuario extends BasePage {
     public String correctPassword = "Password1";
     public String correctRepeatPassword = "Password1";
 
+    //Credencial incorrecta
+    public String incorrectRepeatPassword = "Password2";
+
     //XPATH
     public String btnCreateUser = "//button[@type='button']";
     public String txtFirstName = "//input[@id='firstname']";
@@ -22,7 +27,11 @@ public class RegistroUsuario extends BasePage {
     public String txtRepeatPassword = "//input[@id='repeat_password']";
     public String btnRegisterUser = "//button[contains(.,'Registrar Usuario')]";
     public String btnCancel = "//button[contains(.,'Cancelar')]";
+    public String creationMessageOK = "//div[@class='MuiAlert-message css-1xsto0d' and text()='Usuario creado correctamente']";
+    public String creationMessageNotOK = "//div[@class='MuiAlert-message css-1xsto0d' and text()='Contraseñas no coinciden']";
 
+    SoftAssert soft = new SoftAssert();
+    
     public RegistroUsuario(){
         super(driver);
     }
@@ -52,8 +61,39 @@ public class RegistroUsuario extends BasePage {
         write(txtRepeatPassword, correctRepeatPassword);
     }
 
+    //Se ingresa contraseña incorrecta en formulario
+    public void putInCorrectData() {
+        write(txtFirstName, correctName);
+        write(txtLastName, correctLastName);
+        write(txtEmail, correctEmail);
+        write(txtPassword, correctPassword);
+        write(txtRepeatPassword, incorrectRepeatPassword);
+    }
+
     //Se oprime botón REGISTRAR USUARIO
     public void pressBtnRegisterUser() {
         clickElement(btnRegisterUser);
+    }
+
+    //Se valida mensaje de error en la creación
+    public void validateErrorCreationMessage(){
+        try { 
+            Thread.sleep(2000);
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); // Restablece el estado de interrupción
+            e.printStackTrace();
+        }
+        soft.assertEquals("Contraseñas no coinciden",obtenerTextoDeDiv(creationMessageNotOK));
+    }
+
+    //Se valida mensaje de creación
+    public void validateCreationMessage(){
+        try { 
+            Thread.sleep(2000);
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); // Restablece el estado de interrupción
+            e.printStackTrace();
+        }
+        soft.assertEquals("Usuario creado correctamente",obtenerTextoDeDiv(creationMessageOK));
     }
 }

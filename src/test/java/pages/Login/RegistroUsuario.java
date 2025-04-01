@@ -95,5 +95,6 @@ public class RegistroUsuario extends BasePage {
             e.printStackTrace();
         }
         soft.assertEquals("Usuario creado correctamente",obtenerTextoDeDiv(creationMessageOK));
+        soft.assertAll();
     }
 }

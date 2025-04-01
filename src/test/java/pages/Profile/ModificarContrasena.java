@@ -94,5 +94,6 @@ public class ModificarContrasena extends BasePage{
             e.printStackTrace();
         }
         soft.assertEquals("Contraseña cambiada correctamente",obtenerTextoDeDiv(modificationPasswordMessageOK));
+        soft.assertAll();
     }
 }

@@ -111,5 +111,6 @@ public class EditarTareas extends BasePage{
             e.printStackTrace();
         }
         soft.assertEquals("Tarea modificada correctamente",obtenerTextoDeDiv(taskEditMessageOK));
+        soft.assertAll();
     }
 }

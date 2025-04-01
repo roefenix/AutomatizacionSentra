@@ -105,5 +105,6 @@ public class CrearTareas extends BasePage{
             e.printStackTrace();
         }
         soft.assertEquals("Tarea creada correctamente",obtenerTextoDeDiv(taskCreationMessageOK));
+        soft.assertAll();
     }
 }

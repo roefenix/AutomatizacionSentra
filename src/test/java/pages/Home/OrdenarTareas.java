@@ -1,5 +1,7 @@
 package pages.Home;
 
+import org.testng.asserts.SoftAssert;
+
 import pages.BasePage;
 
 public class OrdenarTareas extends BasePage{
@@ -15,13 +17,28 @@ public class OrdenarTareas extends BasePage{
     public String password = "//input[@id='password']";
     public String btnSubmit = "//button[@type='submit']";
     public String btnHome = "//span[normalize-space()='Home']";
+    public String btnSalir = "//span[normalize-space()='Salir']";
     public String btnOrderByTitleAscending = "//span[contains(.,'Títulosorted ascending')]";
     public String btnOrderByTitleDescending = "//span[contains(.,'Títulosorted descending')]";
-    public String btnOrderByPriorityAscending = "//span[contains(.,'Prioridad')]";
-    public String btnOrderByPriorityDescending = "//span[contains(.,'Prioridad')]";
-    public String btnOrderByExpireDateAscending = "(//span[@class='MuiButtonBase-root MuiTableSortLabel-root css-7fdmwy'])[3]";
-    public String btnOrderByExpireDateDescending = "(//span[@class='MuiButtonBase-root MuiTableSortLabel-root css-7fdmwy'])[3]";
+    public String btnOrderByPriorityAscending = "//span[contains(@class, 'MuiButtonBase-root') and contains(@class, 'MuiTableSortLabel-root') and text()='Prioridad']";
+    public String btnOrderByPriorityDescending = "//span[contains(.,'Prioridadsorted ascending')]";
+    public String btnOrderByExpireDateAscending = "//span[contains(@class, 'MuiButtonBase-root') and contains(@class, 'MuiTableSortLabel-root') and text()='Fecha Vencimiento']";
+    public String btnOrderByExpireDateDescending = "//span[contains(.,'Fecha Vencimientosorted ascending')]";
+    public String titleSpace1 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[1]/td[1]";
+    public String titleSpace2 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[2]/td[1]";
+    public String titleSpace3 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[3]/td[1]";
+    public String titleSpace4 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[4]/td[1]";
+    public String dateSpace1 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[1]/td[3]";
+    public String dateSpace2 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[2]/td[3]";
+    public String dateSpace3 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[3]/td[3]";
+    public String dateSpace4 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[4]/td[3]";
+    public String prioritySpace1 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[1]/td[4]";
+    public String prioritySpace2 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[2]/td[4]";
+    public String prioritySpace3 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[3]/td[4]";
+    public String prioritySpace4 = "/html/body/div[1]/div/main/div[2]/div/div/div[1]/table/tbody/a[4]/td[4]";
 
+    SoftAssert soft = new SoftAssert();
+    
     public OrdenarTareas(){
         super(driver);
     }
@@ -47,6 +64,12 @@ public class OrdenarTareas extends BasePage{
     public void pressBtnHome() {
         clickElement(btnHome);
     }
+
+    //Se oprime boton Salir
+    public void pressBtnSalir() {
+        clickElement(btnHome);
+    }
+
 
     //Se oprime botón de ordenamiento ascendiente de titulo
     public void pressBtnOrderByTitleAscending() {
@@ -112,5 +135,90 @@ public class OrdenarTareas extends BasePage{
             e.printStackTrace();
         }
         clickElement(btnOrderByPriorityDescending);
+    }
+
+    //Se valida ordeniamiento ascendente por titulo
+    public void validateAscTitleInfo(){
+        try { 
+            Thread.sleep(500);
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); // Restablece el estado de interrupción
+            e.printStackTrace();
+        }
+        soft.assertEquals("Z",obtenerTextoDeDiv(titleSpace1));
+        soft.assertEquals("X",obtenerTextoDeDiv(titleSpace2));
+        soft.assertEquals("M",obtenerTextoDeDiv(titleSpace3));
+        soft.assertEquals("B",obtenerTextoDeDiv(titleSpace4));
+        soft.assertAll();
+    }
+    //Se valida ordeniamiento descendente por titulo
+    public void validateDescTitleInfo(){
+        try { 
+            Thread.sleep(500);
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); // Restablece el estado de interrupción
+            e.printStackTrace();
+        }
+        soft.assertEquals("B",obtenerTextoDeDiv(titleSpace1));
+        soft.assertEquals("M",obtenerTextoDeDiv(titleSpace2));
+        soft.assertEquals("X",obtenerTextoDeDiv(titleSpace3));
+        soft.assertEquals("Z",obtenerTextoDeDiv(titleSpace4));
+        soft.assertAll();
+    }
+    //Se valida ordeniamiento ascendente por fecha vencimiento
+    public void validateAscDateInfo(){
+        try { 
+            Thread.sleep(500);
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); // Restablece el estado de interrupción
+            e.printStackTrace();
+        }
+        soft.assertEquals("2025-04-01T05:45:06",obtenerTextoDeDiv(dateSpace1));
+        soft.assertEquals("2026-04-01T05:45:06",obtenerTextoDeDiv(dateSpace2));
+        soft.assertEquals("2027-04-01T05:45:06",obtenerTextoDeDiv(dateSpace3));
+        soft.assertEquals("2028-04-01T05:42:45",obtenerTextoDeDiv(dateSpace4));
+        soft.assertAll();
+    }
+    //Se valida ordeniamiento descendente por fecha vencimiento
+    public void validateDescDateInfo(){
+        try { 
+            Thread.sleep(500);
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); // Restablece el estado de interrupción
+            e.printStackTrace();
+        }
+        soft.assertEquals("2028-04-01T05:42:45",obtenerTextoDeDiv(dateSpace1));
+        soft.assertEquals("2027-04-01T05:45:06",obtenerTextoDeDiv(dateSpace2));
+        soft.assertEquals("2026-04-01T05:45:06",obtenerTextoDeDiv(dateSpace3));
+        soft.assertEquals("2025-04-01T05:45:06",obtenerTextoDeDiv(dateSpace4));
+        soft.assertAll();
+    }
+    //Se valida ordeniamiento ascendente por prioridad
+    public void validateAscPriorityInfo(){
+        try { 
+            Thread.sleep(500);
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); // Restablece el estado de interrupción
+            e.printStackTrace();
+        }
+        soft.assertEquals("0",obtenerTextoDeDiv(prioritySpace1));
+        soft.assertEquals("1",obtenerTextoDeDiv(prioritySpace2));
+        soft.assertEquals("3",obtenerTextoDeDiv(prioritySpace3));
+        soft.assertEquals("4",obtenerTextoDeDiv(prioritySpace4));
+        soft.assertAll();
+    }
+    //Se valida ordeniamiento descendente por prioridad
+    public void validateDescPriorityInfo(){
+        try { 
+            Thread.sleep(500);
+        } catch (InterruptedException e) { 
+            Thread.currentThread().interrupt(); // Restablece el estado de interrupción
+            e.printStackTrace();
+        }
+        soft.assertEquals("4",obtenerTextoDeDiv(prioritySpace1));
+        soft.assertEquals("3",obtenerTextoDeDiv(prioritySpace2));
+        soft.assertEquals("1",obtenerTextoDeDiv(prioritySpace3));
+        soft.assertEquals("0",obtenerTextoDeDiv(prioritySpace4));
+        soft.assertAll();
     }
 }

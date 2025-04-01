@@ -335,24 +335,48 @@ public class PruebaSeleniumSteps {
     public void iPressBtnOrderByTitleAscending(){
         OrdenarTarea.pressBtnOrderByTitleAscending();
     } 
+    @Then("valido el orden ascendente por titulo")
+    public void ivalidateAscTitleInfo(){
+        OrdenarTarea.validateAscTitleInfo();
+    } 
     @Then("oprimo el botón para ordenar descendentemente por titulo la tarea")
     public void iPressBtnOrderByTitleDescending(){
         OrdenarTarea.pressBtnOrderByTitleDescending();
+    } 
+    @Then("valido el orden descendente por titulo")
+    public void ivalidateDescTitleInfo(){
+        OrdenarTarea.validateDescTitleInfo();
     } 
     @Then("oprimo el botón para ordenar ascendentemente por fecha de vencimiento la tarea")
     public void iPressBtnOrderByExpireDateAscending(){
         OrdenarTarea.pressBtnOrderByExpireDateAscending();
     }
+    @Then("valido el orden ascendente por fecha vencimiento")
+    public void iValidateAscDateInfo(){
+        OrdenarTarea.validateAscDateInfo();
+    }
     @Then("oprimo el botón para ordenar descendentemente por fecha de vencimiento la tarea")
     public void iPressBtnOrderByExpireDateDescending(){
         OrdenarTarea.pressBtnOrderByExpireDateDescending();
+    }
+    @Then("valido el orden descendente por fecha vencimiento")
+    public void iValidateDescDateInfo(){
+        OrdenarTarea.validateDescDateInfo();
     }
     @Then("oprimo el botón para ordenar ascendentemente por prioridad la tarea")
     public void iPressBtnOrderByPriorityAscending(){
         OrdenarTarea.pressBtnOrderByPriorityAscending();
     }
+    @Then("valido el orden ascendente por prioridad")
+    public void iValidateAscPriorityInfo(){
+        OrdenarTarea.validateAscPriorityInfo();
+    }
     @Then("oprimo el botón para ordenar descendentemente por prioridad la tarea")
     public void iPressBtnOrderByPriorityDescending(){
         OrdenarTarea.pressBtnOrderByPriorityDescending();
+    }
+    @Then("valido el orden descendente por prioridad")
+    public void iValidateDescPriorityInfo(){
+        OrdenarTarea.validateDescPriorityInfo();
     }
 }

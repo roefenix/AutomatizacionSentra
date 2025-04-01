@@ -70,6 +70,7 @@ public class InicioSesion extends BasePage{
             e.printStackTrace();
         }
         soft.assertEquals("http://192.168.80.43:10600/dashboard",obtenerUrlActual());
+        soft.assertAll();
     }
 }
 // //XPATH

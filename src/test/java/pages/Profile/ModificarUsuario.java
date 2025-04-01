@@ -115,5 +115,6 @@ public class ModificarUsuario extends BasePage{
         soft.assertEquals(correctNameModificado,obtenerTextoDeDiv(firstNameInfo));
         soft.assertEquals(correctLastNameModificado,obtenerTextoDeDiv(lastNameInfo));
         soft.assertEquals(correctEmailMoficado,obtenerTextoDeDiv(emailInfo));
+        soft.assertAll();
     }
 }

@@ -39,8 +39,14 @@ Scenario: Usuario Ordena tareas creadas
     #Then oprimo el botón Salir
 
     Then oprimo el botón para ordenar ascendentemente por titulo la tarea
+    Then valido el orden ascendente por titulo
     Then oprimo el botón para ordenar descendentemente por titulo la tarea
+    Then valido el orden descendente por titulo
     Then oprimo el botón para ordenar ascendentemente por fecha de vencimiento la tarea
+    Then valido el orden ascendente por fecha vencimiento
     Then oprimo el botón para ordenar descendentemente por fecha de vencimiento la tarea
+    Then valido el orden descendente por fecha vencimiento
     Then oprimo el botón para ordenar ascendentemente por prioridad la tarea
+    Then valido el orden ascendente por prioridad
     Then oprimo el botón para ordenar descendentemente por prioridad la tarea
+    Then valido el orden descendente por prioridad

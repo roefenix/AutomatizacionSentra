@@ -99,7 +99,7 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
     }
 
-    public void write(String locator, String keysToSend){ //ahh.. aqui dejo el write...
+    public void write(String locator, String keysToSend){
         WebElement element = driver.findElement(By.xpath(locator));
         element.sendKeys(Keys.CONTROL + "a");
         element.sendKeys(Keys.BACK_SPACE);
